@@ -2,9 +2,12 @@ from django.db import models
 from elasticutils.contrib.django import MappingType
 
 class Listing(models.Model):
-    id = models.CharField(max_length=20)
+    id = models.CharField(max_length=50, primary_key=True)
     title = models.CharField(max_length=1000)
     image = models.CharField(max_length=1000)
+
+    def __unicode__(self):
+        return self.id
 
 class ListingType(MappingType):
     @classmethod

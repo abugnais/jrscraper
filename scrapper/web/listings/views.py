@@ -1,12 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
-# Create your views here.
-
-#class search:
-#    pass
+from listings.models import Listing
 
 def search(request):
-    return render(request, 'listings/templates/search.html', {
-
+    results = Listing.objects.all()
+    print(results)
+    return render(request, 'search.html', {
+        'results': results
     })
