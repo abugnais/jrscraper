@@ -6,11 +6,10 @@ class Search():
 
     def __init__(self):
         self.es = Elasticsearch()
-        pass
 
     def findAll(self):
         result = self.es.search(index=self.index, body={"query": {"match_all": {}}})
-        x = []
+
         for res in result["hits"]["hits"]:
             yield {"title": res["_source"]["title"], "image": res["_source"]["image"], "id": res["_id"]}
 
