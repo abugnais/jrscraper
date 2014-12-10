@@ -5,7 +5,7 @@ import json
 
 def search(request):
     count   = request.GET.get("count")
-    count   = 30 if count.isdigit() == False else count
+    count   = 30 if count == None or count.isdigit() == False else count
     search  = Search()
     results = search.findAll(count)
     return render(request, "search.html", {"results": results})
