@@ -1,1 +1,23 @@
-<h1>Hello World!</h1>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Results</title>
+    </head>
+    <body>
+        <table>
+            {% for res in results %}
+            <tr>
+                <td>
+                    {{ res.title }}
+                </td>
+                <td>
+                    <img src="{{ res.image }}" />
+                </td>
+                <td>
+                    <a href="#" data-id="{{ res.id }}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

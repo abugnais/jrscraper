@@ -9,7 +9,10 @@ class Search():
         pass
 
     def findAll(self):
-        return self.es.search(index=self.index, body={"query": {"match_all": {}}})
+        result = self.es.search(index=self.index, body={"query": {"match_all": {}}})
+        x = []
+        for res in result["hits"]["hits"]:
+            yield {"title": res["_source"]["title"], "image": res["_source"]["image"], "id": res["_id"]}
 
     def save(self, id, doc):
         return self.es.index(index=self.index, doc_type=self.doc_type, id=id, body=doc)
