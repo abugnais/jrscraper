@@ -13,7 +13,6 @@ for res in results:
     title = res.xpath('.//span[@class="p_title"]/text()')[0].strip()
     image = res.xpath('.//img[@class="search_results_img"]/@src')[0].strip()
     id = re.sub('row_[0-9]+_', '', res.xpath('./@id')[0])
-    print(id)
 
     doc = {
         'title' : title,

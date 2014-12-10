@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from listings.models import Listing
+from listings.search import Search
 
 def search(request):
-    results = Listing.objects.all()
-    print(results)
+    search  = Search()
+    results = search.findAll()
     return render(request, 'search.html', {
         'results': results
     })
