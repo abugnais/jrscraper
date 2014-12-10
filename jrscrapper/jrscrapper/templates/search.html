@@ -11,13 +11,39 @@
                     {{ res.title }}
                 </td>
                 <td>
-                    <img src="{{ res.image }}" />
+                    <img src="{{ res.image }}" height="150" />
                 </td>
                 <td>
-                    <a href="#" data-id="{{ res.id }}">Delete</a>
+                    <form class="delete-form" method="POST" action="./delete/">
+                        <input name="id" type="hidden" value="{{ res.id }}">
+                        <input type="submit" value="Delete" />
+                        {% csrf_token %}
+                    </form>
                 </td>
             </tr>
             {% endfor %}
         </table>
     </body>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $(".delete-form").submit(function(e) {
+            e.preventDefault();
+            form        = $(this);
+            form_data   = form.serialize();
+            form_url    = form.attr("action");
+            form_method = form.attr("method");
+
+            $.ajax({
+                data: form_data,
+                url: form_url,
+                type: form_method,
+                dataType: "json",
+                success: function(result) {
+                    form.closest('tr').remove();
+                }
+            });
+        });
+    });
+    </script>
 </html>
