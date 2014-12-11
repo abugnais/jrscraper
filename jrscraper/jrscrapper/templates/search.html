@@ -14,7 +14,7 @@
                     <img src="{{ res.image }}" height="150" />
                 </td>
                 <td>
-                    <form class="delete-form" method="POST" action="./delete/">
+                    <form class="delete-form" method="POST" action="../delete/">
                         <input name="id" type="hidden" value="{{ res.id }}">
                         <input type="submit" value="Delete" />
                         {% csrf_token %}
