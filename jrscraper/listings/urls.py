@@ -3,6 +3,6 @@ from django.contrib import admin
 from listings import views
 
 urlpatterns = [
-    url(r'^search/|^$', views.search),
+    url(r'^search/', views.search),
     url(r'^delete/', views.delete),
 ]
