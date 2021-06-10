@@ -1,4 +1,4 @@
-Django==1.11.29
+Django==2.2.24
 argparse==1.2.1
 elasticsearch==1.2.0
 lxml==4.6.3
